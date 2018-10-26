@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+
+        .box {
+            width: 960px;
+            height: 540px;
+            /* border: 5px solid #999; */
+            margin: 150px auto;
+        }
+
+        .box ul {
+            width: 960px;
+            height: 540px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform .6s;
+        }
+
+        .box ul li {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .box ul li:nth-child(1) {
+            transform: rotateX(90deg) translateZ(270px);
+        }
+
+        .box ul li:nth-child(2) {
+            transform: rotateX(-90deg) translateZ(270px);
+        }
+
+        .box ul li:nth-child(3) {
+            transform: rotateX(180deg) translateZ(270px);
+        }
+
+        .box ul li:nth-child(4) {
+            transform: translateZ(270px);
+        }
+
+        .btn {
+            width: 1080px;
+            margin: 0 auto;
+            position: relative;
+            height: 0px;
+            top: -470px;
+        }
+
+        .btn button {
+            width: 40px;
+            height: 80px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border: none;
+            outline: none;
+            font: 900 24px/80px '宋体';
+            color: #fff;
+        }
+
+        .btn button:frist-child {
+            float: left;
+        }
+
+        .btn button:last-child {
+            /* border-radius: 0 10px 10px 0; */
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li><img src="./imgs/1.jpg" alt=""></li>
+            <li><img src="./imgs/2.jpg" alt=""></li>
+            <li><img src="./imgs/3.jpg" alt=""></li>
+            <li><img src="./imgs/4.jpg" alt=""></li>
+        </ul>
+    </div>
+    <div class="btn">
+        <button>&lt;</button>
+        <button>&gt;</button>
+    </div>
+
+    <script type="text/javascript">
+        var btn = document.querySelectorAll('button');
+        var box = document.querySelector('.box');
+        var _ul = box.querySelector('ul');
+        var num = 0;
+
+        // btn 获取到的是一个伪数组
+        btn[1].onclick = function () {
+            num++;
+            _ul.style.transform = 'rotateX(' + num * 90 + 'deg)'
+        }
+
+        btn[0].onclick = function () {
+            num--;
+            _ul.style.transform = 'rotateX(' + num * 90 + 'deg)';
+        }
+    </script>
+</body>
+
+</html>
